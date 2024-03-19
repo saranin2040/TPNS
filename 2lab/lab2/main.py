@@ -59,6 +59,9 @@ def showTable(df,count):
     print(df.iloc[-10:, :13])
     #print(df.iloc[count-10:count])
 
+def save_to_csv(data, filename):
+    data.to_csv(filename, index=False)
+
 filename = 'data/mushroom.data'
 #filename = 'data/data.csv'
 data = load_and_clean_csv(filename)
@@ -74,6 +77,8 @@ showCorrelation(matCorr)
 data=removeCorrCols(data,matCorr,0.8)
 
 showCorrelation(data.corr())
+
+save_to_csv(data, 'data/mushroomClear.data')
  
 #gainRatios = getGainRatios(data, 'Price')
 
